@@ -1,0 +1,52 @@
+def metodo_bisezione(fname, a, b, tolx, tolf):
+  """
+  Implementa il metodo di bisezione per il calcolo degli zeri di un'equazione non lineare.
+
+  Parametri:
+  f: La funzione da cui si vuole calcolare lo zero.
+  a: L'estremo sinistro dell'intervallo di ricerca.
+  b: L'estremo destro dell'intervallo di ricerca.
+  tol: La tolleranza di errore.
+
+  Restituisce:
+  Lo zero approssimato della funzione, il numero di iterazioni e la lista di valori intermedi.
+  """
+
+  fa = fname(a)
+  fb = fname(b)
+  if ___:  
+    print("Non è possibile applicare il metodo di bisezione \n")
+    return None, None, None
+
+  it = 0
+  v_xk = []
+
+  maxit = math.ceil(math.log((b - a) / tolx) / math.log(2)) - 1
+
+
+  while ___: 
+    xk = ___ 
+    v_xk.append(xk)
+    it += 1
+    fxk = fname(xk)
+    if fxk == 0:
+        return xk, it, v_xk
+
+      
+    if sign(fa) * sign(fxk) > 0:
+      a = ___ 
+      fa = ___ 
+    elif sign(fxk) * sign(fb) > 0:
+      b = ___ 
+      fb = ___ 
+
+  return xk, it, v_xk
+
+
+# sign(fa) * sign(fb) >= 0
+# abs(b - a) > tolx
+# a + (b - a) / 2
+# xk
+# fxk
+# xk
+# fxk

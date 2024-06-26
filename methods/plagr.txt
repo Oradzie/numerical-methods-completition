@@ -1,0 +1,23 @@
+def plagr(xnodi, j):
+  """
+  Restituisce i coefficienti del j-esimo pol di
+  Lagrange associato ai punti del vettore xnodi
+  """
+  xzeri = np.zeros_like(xnodi)
+  n = xnodi.size
+  if j == 0:
+    xzeri = xnodi[1:n]
+  else:
+    xzeri = ___ 
+  
+  num = ___ 
+  den = ___ 
+
+  p = num / den
+  
+  return p
+
+
+# np.append(xnodi[0:j], xnodi[j+1:n])
+# np.poly(xzeri)
+# np.polyval(num, xnodi[j])

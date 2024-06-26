@@ -1,0 +1,41 @@
+def steepestdescent(A, b, x0, itmax, tol):
+  n, m = A.shape
+  if n != m:
+    print("Matrice non quadrata")
+    return [], []
+  
+  x = x0
+
+  r = A@x - b
+  p = ___ 
+  it = 0
+  nb = np.linalg.norm(b)
+  errore = np.linalg.norm(r) / nb
+  vec_sol = []
+  vec_sol.append(x)
+  vet_r = []
+  vet_r.append(errore)
+
+  while ___: 
+    it = it + 1
+    Ap = ___ 
+
+    alpha = ___ 
+
+    x = ___ 
+
+    vec_sol.append(x)
+    r = r + alpha * Ap
+    errore = np.linalg.norm(r) / nb
+    vet_r.append(errore)
+    p = ___ 
+
+  return x,vet_r,vec_sol,it
+
+
+# -r
+# errore >= tol and it < itmax
+# A@p
+# -(r.T@p) / (p.T@Ap)
+# x + alpha * p
+# -r

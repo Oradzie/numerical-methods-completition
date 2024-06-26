@@ -1,0 +1,18 @@
+def eqnorm(A, b):
+  G = ___ 
+    
+  f = ___ 
+  
+  L = ___ 
+  U = ___ 
+  z, flag = SolveTriangular.Lsolve(L, f)
+  if flag == 0:
+    x, flag = SolveTriangular.Usolve(U, z)
+  
+  return x
+
+
+# A.T@A
+# A.T@b
+# spLin.cholesky(G, lower=True)
+# L.T

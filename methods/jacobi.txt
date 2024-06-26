@@ -1,0 +1,31 @@
+def jacobi(A, b, x0, toll, it_max):
+  errore = 1000
+  d = np.diag(A)
+  n = A.shape[0]
+  invM = np.diag(1 / d)
+  E = ___ 
+  F = ___ 
+  N = ___ 
+  T = ___ 
+  autovalori = np.linalg.eigvals(T)
+  raggiospettrale = ___ 
+  print("raggio spettrale jacobi", raggiospettrale)
+  it = 0
+  
+  er_vet = []
+  while ___: 
+    x = ___ 
+    errore = np.linalg.norm(x - x0) / np.linalg.norm(x)
+    er_vet.append(errore)
+    x0 = x.copy()
+    it = it + 1
+  return x, it, er_vet
+
+
+# np.tril(A, -1)
+# np.triu(A, 1)
+# -(E + F)
+# np.dot(invM, N)
+# np.max(np.abs(autovalori))
+# it <= it_max and errore >= toll
+# (b + np.dot(N, x0)) / d.reshape(n, 1)

@@ -1,0 +1,39 @@
+def conjugate_gradient(A, b, x0, itmax, tol):
+  n, m = A.shape
+  if n != m:
+    print("Matrice non quadrata")
+    return [], []
+  
+  x = x0
+  
+  r = A@x-b
+  p = -r
+  it = 0
+  nb = np.linalg.norm(b)
+  errore = np.linalg.norm(r) / nb
+  vec_sol = []
+  vec_sol.append(x0)
+  vet_r = []
+  vet_r.append(errore)
+
+  while errore >= tol and it < itmax:
+    it = it + 1
+    Ap = ___ 
+    alpha = ___ 
+    x = ___ 
+    vec_sol.append(x)
+    rtr_old = r.T@r
+    r = r + alpha * Ap
+    gamma = ___ 
+    errore = np.linalg.norm(r) / nb
+    vet_r.append(errore)
+    p = ___ 
+  
+  return x, vet_r, vec_sol, it
+
+
+# A.dot(p)
+# -(r.T@p) / (p.T@Ap)
+# x + alpha * p
+# r.T@r / rtr_old
+# -r + gamma * p

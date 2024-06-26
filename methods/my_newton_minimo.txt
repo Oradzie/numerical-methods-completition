@@ -1,0 +1,73 @@
+def my_newton_minimo(gradiente, Hess, x0, tolx, tolf, nmax):
+  """
+  DA UTILIZZARE NEL CASO IN CUI CALCOLATE DRIVATE PARZIALI PER GRADIENTE ED HESSIANO SENZA UTILIZZO DI SYMPY
+  
+  Funzione di newton-raphson per calcolare il minimo di una funzione in più variabili
+
+  Parametri
+  ----------
+  fun : 
+    Nome della funzione che calcola il gradiente della funzione non lineare.
+  Hess :  
+    Nome della funzione che calcola la matrice Hessiana della funzione non lineare.
+  x0 : array
+    Vettore contenente l'approssimazione iniziale della soluzione.
+  tolx : float
+    Parametro di tolleranza per l'errore assoluto.
+  tolf : float
+    Parametro di tolleranza per l'errore relativo.
+  nmax : int
+    Numero massimo di iterazioni.
+
+  Restituisce
+  -------
+  x : array
+    Vettore soluzione del sistema (o equazione) non lineare.
+  it : int
+    Numero di iterazioni fatte per ottenere l'approssimazione desiderata.
+  Xm : array
+    Vettore contenente la norma del passo ad ogni iterazione.
+  """
+
+  matHess = ___ 
+  if ___: 
+    print("La matrice Hessiana calcolata nell'iterato precedente non è a rango massimo")
+    return None, None, None
+  grad_fx0 = gradiente(x0)    
+  s = ___ 
+  it = 1
+  x1 = ___ 
+  grad_fx1 = gradiente(x1)
+  Xm = [np.linalg.norm(s, 1)]
+  
+  while ___: 
+    x0 = ___ 
+    it += 1
+    matHess = ___ 
+    grad_fx0 = grad_fx1
+     
+    if ___: 
+      print("La matrice Hessiana calcolata nell'iterato precedente non è a rango massimo")
+      return None, None, None
+    
+    s = ___ 
+
+    x1 = ___ 
+
+    grad_fx1 = gradiente(x1)
+    print(np.linalg.norm(s, 1))
+    Xm.append(np.linalg.norm(s, 1))
+
+  return x1, it, Xm
+
+
+# Hess(x0)
+# np.linalg.det(matHess) == 0
+# -np.linalg.solve(matHess, gradiente(x0))
+# x0 + s
+# it <= nmax and np.linalg.norm(grad_fx1 , 1) >= tolf and np.linalg.norm(s, 1) >= tolx * np.linalg.norm(x1, 1)
+# x1
+# Hess(x0)
+# np.linalg.det(matHess) == 0
+# -np.linalg.solve(matHess, grad_fx0)
+# x0 + s

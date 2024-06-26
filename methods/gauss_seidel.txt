@@ -1,0 +1,34 @@
+def gauss_seidel(A, b, x0, toll,it_max):
+  errore = 1000
+  d = np.diag(A)
+  D = ___ 
+  E = ___ 
+  F = ___ 
+  M = ___ 
+  N = ___ 
+  T = ___ 
+  autovalori = np.linalg.eigvals(T)
+  raggiospettrale = ___ 
+  print("raggio spettrale Gauss-Seidel ", raggiospettrale)
+  it = 0
+  er_vet = []
+  while ___: 
+    temp = ___ 
+    ___  
+    errore = np.linalg.norm(x - x0) / np.linalg.norm(x)
+    er_vet.append(errore)
+    x0 = x.copy()
+    it = it + 1
+  return x, it, er_vet
+
+
+# np.diag(d)
+# np.tril(A, -1)
+# np.triu(A, 1)
+# D + E
+# -F
+# np.dot(np.linalg.inv(M), N)
+# np.max(np.abs(autovalori))
+# it <= it_max and errore >= toll
+# b - F@x0
+# x, flag = Lsolve(M, temp)

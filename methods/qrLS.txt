@@ -1,0 +1,12 @@
+def qrLS(A, b):
+  n = A.shape[1]
+  Q, R = spLin.qr(A)
+  h = ___ 
+  x,flag = ___ 
+  residuo = np.linalg.norm(h[n:])**2
+
+  return x, residuo
+
+
+# Q.T@b
+# SolveTriangular.Usolve(R[0:n,:],h[0:n])

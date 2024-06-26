@@ -1,0 +1,21 @@
+def SVDLS(A, b):
+  m, n = A.shape
+  U, s, VT = spLin.svd(A)
+  V = VT.T
+  thresh = np.spacing(1) * m * s[0]
+  k = np.count_nonzero(s > thresh)
+  print("rango=", k)
+  d = ___ 
+  d1 = ___ 
+  s1 = ___ 
+  c = ___ 
+  x = V[:,:k]@c 
+  residuo = np.linalg.norm(d[k:])**2
+
+  return x, residuo
+
+
+# U.T@b
+# d[:k].reshape(k,1)
+# s[:k].reshape(k,1)
+# d1 / s1

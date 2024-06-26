@@ -1,0 +1,19 @@
+# hidden files
+.idea
+.gradle/
+.vscode/
+*.iml
+
+# docker files
+Dockerfile
+.dockerignore
+
+# output folders
+bin/
+build/
+
+# files ignored by extension
+*.class
+*.DS_Store
+deleteme/
+.git
