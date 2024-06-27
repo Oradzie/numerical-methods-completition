@@ -24,7 +24,7 @@ def metodo_bisezione(fname, a, b, tolx, tolf):
   maxit = math.ceil(math.log((b - a) / tolx) / math.log(2)) - 1
 
 
-  while abs(b - a) > tolx: # added
+  while abs(b - a) > tolx and it <= maxit: # added
     xk = a + (b - a) / 2 # added
     v_xk.append(xk)
     it += 1
@@ -596,7 +596,7 @@ def jacobi(A, b, x0, toll, it_max):
   E = np.tril(A, -1) # added
   F = np.triu(A, 1) # added
   N = -(E + F) # added
-  T = np.dot(invM, N) # added
+  T = invM@N # added
   autovalori = np.linalg.eigvals(T)
   raggiospettrale = np.max(np.abs(autovalori)) # added
   print("raggio spettrale jacobi", raggiospettrale)
@@ -620,7 +620,7 @@ def gauss_seidel(A, b, x0, toll,it_max):
   F = np.triu(A, 1) # added
   M = D + E # added
   N = -F # added
-  T = np.dot(np.linalg.inv(M), N) # added
+  T = np.linalg.inv(M)@N # added
   autovalori = np.linalg.eigvals(T)
   raggiospettrale = np.max(np.abs(autovalori)) # added
   print("raggio spettrale Gauss-Seidel ", raggiospettrale)
@@ -645,7 +645,7 @@ def gauss_seidel_sor(A, b, x0, toll, it_max, omega):
   F = np.triu(A, 1) # added
   Momega = D + omega * E
   Nomega = (1 - omega) * D - omega * F
-  T = np.dot(np.linalg.inv(Momega), Nomega) # added
+  T = np.linalg.inv(Momega)@Nomega # added
   autovalori = np.linalg.eigvals(T)
   raggiospettrale = np.max(np.abs(autovalori))
   print("raggio spettrale Gauss-Seidel SOR ", raggiospettrale)
@@ -657,7 +657,7 @@ def gauss_seidel_sor(A, b, x0, toll, it_max, omega):
   xnew = x0.copy()
   er_vet = []
   while it <= it_max and errore >= toll: # added
-    temp = b - np.dot(F, xold) # added
+    temp = b - F@xold # added
     xtilde, flag = Lsolve(M, temp) # added
     xnew = (1 - omega) * xold + omega * xtilde # added
     errore = np.linalg.norm(xnew - xold) / np.linalg.norm(xnew)
@@ -685,7 +685,7 @@ def steepestdescent(A, b, x0, itmax, tol):
   vet_r = []
   vet_r.append(errore)
 
-  while errore >= tol and it < itmax: # added
+  while it < itmax and errore >= tol: # added
     it = it + 1
     Ap = A@p # added
 
@@ -722,7 +722,7 @@ def conjugate_gradient(A, b, x0, itmax, tol):
 
   while errore >= tol and it < itmax:
     it = it + 1
-    Ap = A.dot(p) # added
+    Ap = A@p # added
     alpha = -(r.T@p) / (p.T@Ap) # added
     x = x + alpha * p # added
     vec_sol.append(x)
