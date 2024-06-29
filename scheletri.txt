@@ -24,7 +24,7 @@ def metodo_bisezione(fname, a, b, tolx, tolf):
   maxit = math.ceil(math.log((b - a) / tolx) / math.log(2)) - 1
 
 
-  while abs(b - a) > tolx and it <= maxit: # added
+  while it < maxit and abs(b - a) > tolx: # added
     xk = a + (b - a) / 2 # added
     v_xk.append(xk)
     it += 1
@@ -754,7 +754,7 @@ def qrLS(A, b):
   n = A.shape[1]
   Q, R = spLin.qr(A)
   h = Q.T@b # added
-  x,flag = SolveTriangular.Usolve(R[0:n,:],h[0:n]) # added
+  x,flag = Usolve(R[0:n,:],h[0:n]) # added
   residuo = np.linalg.norm(h[n:])**2
 
   return x, residuo

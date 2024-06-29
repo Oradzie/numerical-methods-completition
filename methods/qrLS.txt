@@ -9,4 +9,4 @@ def qrLS(A, b):
 
 
 # Q.T@b
-# SolveTriangular.Usolve(R[0:n,:],h[0:n])
+# Usolve(R[0:n,:],h[0:n])
