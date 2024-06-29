@@ -25,7 +25,7 @@ def jacobi(A, b, x0, toll, it_max):
 # np.tril(A, -1)
 # np.triu(A, 1)
 # -(E + F)
-# np.dot(invM, N)
+# invM@N
 # np.max(np.abs(autovalori))
 # it <= it_max and errore >= toll
-# (b + np.dot(N, x0)) / d.reshape(n, 1)
+# T@x0 + invM@b

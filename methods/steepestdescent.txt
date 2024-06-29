@@ -34,7 +34,7 @@ def steepestdescent(A, b, x0, itmax, tol):
 
 
 # -r
-# errore >= tol and it < itmax
+# it < itmax and errore >= tol
 # A@p
 # -(r.T@p) / (p.T@Ap)
 # x + alpha * p

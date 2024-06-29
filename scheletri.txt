@@ -492,7 +492,7 @@ def my_newton_minimo(gradiente, Hess, x0, tolx, tolf, nmax):
     print("La matrice Hessiana calcolata nell'iterato precedente non è a rango massimo")
     return None, None, None
   grad_fx0 = gradiente(x0)    
-  s = -np.linalg.solve(matHess, gradiente(x0)) # added
+  s = -np.linalg.solve(matHess, grad_fx0) # added
   it = 1
   x1 = x0 + s # added
   grad_fx1 = gradiente(x1)
@@ -628,7 +628,7 @@ def gauss_seidel(A, b, x0, toll,it_max):
   er_vet = []
   while it <= it_max and errore >= toll: # added
     temp = b - F@x0 # added
-    x, flag = Lsolve(M, temp) # added 
+    x,flag = Lsolve(M, temp) # added 
     errore = np.linalg.norm(x - x0) / np.linalg.norm(x)
     er_vet.append(errore)
     x0 = x.copy()
@@ -658,7 +658,7 @@ def gauss_seidel_sor(A, b, x0, toll, it_max, omega):
   er_vet = []
   while it <= it_max and errore >= toll: # added
     temp = b - F@xold # added
-    xtilde, flag = Lsolve(M, temp) # added
+    xtilde,flag = Lsolve(M, temp) # added
     xnew = (1 - omega) * xold + omega * xtilde # added
     errore = np.linalg.norm(xnew - xold) / np.linalg.norm(xnew)
     er_vet.append(errore)

@@ -44,7 +44,7 @@ def metodo_bisezione(fname, a, b, tolx, tolf):
 
 
 # sign(fa) * sign(fb) >= 0
-# abs(b - a) > tolx
+# abs(b - a) > tolx and it <= maxit
 # a + (b - a) / 2
 # xk
 # fxk

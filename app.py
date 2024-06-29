@@ -7,10 +7,10 @@ import os
 def list_files_in_methods_folder():
     methods_folder = 'methods'
     try:
-        files = [f"{methods_folder}/{file}" for file in os.listdir(methods_folder) if file.endswith('.txt')]
-        if not files:
+        names = [f"{methods_folder}/{file}" for file in os.listdir(methods_folder) if file.endswith('.txt')]
+        if not names:
             messagebox.showwarning("No Files", "No .txt files found in the methods folder.")
-        return files
+        return names
     except FileNotFoundError:
         messagebox.showerror("Error", f"The folder '{methods_folder}' does not exist.")
         return []
@@ -41,9 +41,18 @@ def display_solutions():
 
 # Function to load the text from a file
 def load_text_from_file():
-    with open(files[random.randint(0, len(files) - 1)], 'r') as file:
-        lines = file.readlines()
-    process_text(lines)
+    global files
+    try:
+        with open(random.choice(files), 'r') as file:
+            lines = file.readlines()
+        process_text(lines)
+        files.remove(file.name)
+    except IndexError:
+        response = messagebox.askyesno("No Files", "No more files to load. Do you want to load the files again?")
+        if response:
+            files = list_files_in_methods_folder()
+        else:
+            exit()
 
 # Function to process the text and create the UI elements
 def process_text(lines):
@@ -72,40 +81,42 @@ def process_text(lines):
             missing_words.append(words)
 
     text_area.config(state=tk.DISABLED)
-    
-# Get the list of files in the methods folder
-files = list_files_in_methods_folder()
 
-# Create the main window
-root = tk.Tk()
-root.title("Completa gli scheletri")
 
-# Get the width and height of the main window
-width = root.winfo_screenwidth()
-height = root.winfo_screenheight()
+if __name__ == "__main__":
+    # Get the list of files in the methods folder
+    files = list_files_in_methods_folder()
 
-# Set the window dimensions
-root.state("zoomed")
+    # Create the main window
+    root = tk.Tk()
+    root.title("Completa gli scheletri")
 
-# Create a frame for the text and entries
-frame = tk.Frame(root, highlightbackground="red", highlightthickness=1, bd=0)
-frame.pack(side="top", padx=10, pady=10)
+    # Get the width and height of the main window
+    width = root.winfo_screenwidth()
+    height = root.winfo_screenheight()
 
-# Create a Text widget for displaying the text
-text_area = tk.Text(frame, font=("Ariel", 12), width=int(width*0.08), height=int(height*0.05))
-text_area.pack()
+    # Set the window dimensions
+    root.state("zoomed")
 
-# Create a button to load the text from a file
-load_button = tk.Button(root, text="Next Method", command=load_text_from_file)
-load_button.pack(side="left", padx=10, pady=10)
+    # Create a frame for the text and entries
+    frame = tk.Frame(root, highlightbackground="red", highlightthickness=1, bd=0)
+    frame.pack(side="top", padx=10, pady=10)
 
-# Create a button to check the answers
-check_button = tk.Button(root, text="Check Answers", command=check_answers)
-check_button.pack(side="left", padx=10, pady=10)
+    # Create a Text widget for displaying the text
+    text_area = tk.Text(frame, font=("Ariel", 12), width=int(width*0.08), height=int(height*0.05))
+    text_area.pack()
 
-# Create a button to solve the exercise
-solve_button = tk.Button(root, text="Solve Exercise", command=display_solutions)
-solve_button.pack(side="left", padx=10, pady=10)
+    # Create a button to load the text from a file
+    load_button = tk.Button(root, text="Next Method", command=load_text_from_file, width=20, height=2)
+    load_button.pack(side="left", padx=10, pady=10)
 
-# Run the application
-root.mainloop()
+    # Create a button to check the answers
+    check_button = tk.Button(root, text="Check Answers", command=check_answers, width=20, height=2)
+    check_button.pack(side="left", padx=10, pady=10)
+
+    # Create a button to solve the exercise
+    solve_button = tk.Button(root, text="Solve Exercise", command=display_solutions, width=20, height=2)
+    solve_button.pack(side="left", padx=10, pady=10)
+
+    # Run the application
+    root.mainloop()

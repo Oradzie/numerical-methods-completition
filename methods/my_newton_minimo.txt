@@ -63,7 +63,7 @@ def my_newton_minimo(gradiente, Hess, x0, tolx, tolf, nmax):
 
 # Hess(x0)
 # np.linalg.det(matHess) == 0
-# -np.linalg.solve(matHess, gradiente(x0))
+# -np.linalg.solve(matHess, grad_fx0)
 # x0 + s
 # it <= nmax and np.linalg.norm(grad_fx1 , 1) >= tolf and np.linalg.norm(s, 1) >= tolx * np.linalg.norm(x1, 1)
 # x1

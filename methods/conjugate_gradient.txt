@@ -32,7 +32,7 @@ def conjugate_gradient(A, b, x0, itmax, tol):
   return x, vet_r, vec_sol, it
 
 
-# A.dot(p)
+# A@p
 # -(r.T@p) / (p.T@Ap)
 # x + alpha * p
 # r.T@r / rtr_old

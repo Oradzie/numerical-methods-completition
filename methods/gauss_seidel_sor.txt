@@ -20,7 +20,7 @@ def gauss_seidel_sor(A, b, x0, toll, it_max, omega):
   er_vet = []
   while ___: 
     temp = ___ 
-    ___ 
+    xtilde,flag = ___ 
     xnew = ___ 
     errore = np.linalg.norm(xnew - xold) / np.linalg.norm(xnew)
     er_vet.append(errore)
@@ -34,8 +34,8 @@ def gauss_seidel_sor(A, b, x0, toll, it_max, omega):
 # np.diag(1 / d)
 # np.tril(A, -1)
 # np.triu(A, 1)
-# np.dot(np.linalg.inv(Momega), Nomega)
+# np.linalg.inv(Momega)@Nomega
 # it <= it_max and errore >= toll
-# b - np.dot(F, xold)
-# xtilde, flag = Lsolve(M, temp)
+# b - F@xold
+# Lsolve(M, temp)
 # (1 - omega) * xold + omega * xtilde
